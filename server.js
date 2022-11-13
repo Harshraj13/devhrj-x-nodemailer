@@ -5,7 +5,7 @@ const bodyParser = require(`body-parser`)
 const nodeMailer = require(`nodemailer`)
 const cors = require('cors')
 
-require('dotenv')
+require('dotenv').config()
 
 app.use(cors())
 app.use(express.json())
@@ -52,12 +52,14 @@ app.post('/sendContactMail', (req, res) => {
         subject: "NodeMailer-Portfolio",
 
         html: `<h1>Hello, Boss</h1>
+                <h4>NodeMailer at your service!</h4>
                 <h4>I have recieved a new response from our nodemailer service api</h4>
                 <p>Name: ${name}</p>
                 <p>Email: ${email}</p>
                 <p>Phone: ${phone}</p>
                 <p>Message: ${message}</p>
-                <h4>Enjoy your day Sir, it's my pleasure working for you.`
+                <h4>Enjoy your day Sir, it's my pleasure working for you.</h4>
+                <h6>Have a fantastic day</h6>`
     };
 
     receiver_Email.sendMail(mail, (err) => {
